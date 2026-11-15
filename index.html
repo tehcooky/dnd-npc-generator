@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NPC Ledger</title>
+  <link rel="stylesheet" href="styles.css?v=loading">
+</head>
+<body>
+  <a class="skip" href="#creator">Skip to the creator</a>
+  <header class="top">
+    <div>
+      <p class="eyebrow">Dungeons &amp; Dragons, 2014</p>
+      <h1>NPC Ledger</h1>
+    </div>
+    <p class="lede">One press writes a finished person: a name, a sheet if they have a class, and whatever they are carrying.</p>
+  </header>
+
+  <main>
+    <form id="controls" class="controls">
+      <div id="creator" class="fields">
+        <label>Class
+          <select id="class" name="class"></select>
+        </label>
+        <label>Race
+          <select id="race" name="race"></select>
+        </label>
+        <label>Gender
+          <select id="gender" name="gender">
+            <option value="random">Random</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+          </select>
+        </label>
+        <label>Level
+          <select id="level" name="level"></select>
+        </label>
+        <button type="submit" id="create">Create NPC</button>
+        <button type="button" id="save-pdf" class="secondary">Save PDF</button>
+      </div>
+    </form>
+
+    <p id="error" class="error" role="alert" hidden></p>
+    <p id="status" class="visually-hidden" aria-live="polite"></p>
+    <div id="sheet" class="sheet" hidden></div>
+  </main>
+
+  <dialog id="pdf-dialog" aria-labelledby="pdf-title">
+    <form id="pdf-form">
+      <h2 id="pdf-title">Save a set of NPCs</h2>
+      <p id="pdf-note">Each person uses the class, race, gender, and level selected above. Up to 40.</p>
+      <label>How many
+        <input id="pdf-count" name="count" type="number" inputmode="numeric" required min="1" max="40" value="4" aria-describedby="pdf-note">
+      </label>
+      <label>Name to save it under
+        <input id="pdf-name" name="filename" type="text" required maxlength="80" autocomplete="off" spellcheck="false">
+      </label>
+      <p id="pdf-progress" role="status" aria-live="polite" hidden>
+        <span class="spinner" aria-hidden="true"></span>
+        <span id="pdf-progress-text"></span>
+      </p>
+      <p id="pdf-error" class="error" role="alert" hidden></p>
+      <div class="dialog-actions">
+        <button type="button" id="pdf-cancel" class="secondary">Cancel</button>
+        <button type="submit" id="pdf-save">Save PDF</button>
+      </div>
+    </form>
+  </dialog>
+  <script src="node_modules/html2canvas/dist/html2canvas.js?v=loading"></script>
+  <script src="node_modules/jspdf/dist/jspdf.umd.min.js?v=loading"></script>
+  <script type="module" src="js/app.js?v=loading"></script>
+</body>
+</html>

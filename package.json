@@ -1,0 +1,17 @@
+{
+  "name": "dnd-npc-generator",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "a11y": "node test/a11y.mjs"
+  },
+  "devDependencies": {
+    "@axe-core/puppeteer": "^4.14.0",
+    "axe-core": "^4.14.0",
+    "puppeteer-core": "^25.17.0"
+  },
+  "dependencies": {
+    "html2canvas": "^1.4.1",
+    "jspdf": "^4.2.1"
+  }
+}
